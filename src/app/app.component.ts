@@ -4,6 +4,8 @@ import {
   collection,
   addDoc,
   collectionData,
+  doc,
+  updateDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -33,10 +35,25 @@ export class AppComponent {
 
   getData() {
     const collectionInstance = collection(this.firestore, 'users');
-    collectionData(collectionInstance).subscribe((val) => {
+    collectionData(collectionInstance, {idField: 'id'}).subscribe((val) => {
       console.log(val);
     });
 
-    this.userData = collectionData(collectionInstance);
+    this.userData = collectionData(collectionInstance, {idField: 'id'});
+  }
+
+  updateData(id: string){
+    const docInstance = doc(this.firestore, 'users', id);
+    const updateData = {
+      name: 'updatedName'
+    }
+
+    updateDoc(docInstance, updateData)
+    .then(() => {
+      console.log('Data Updated');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 }
