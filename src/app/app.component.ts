@@ -5,7 +5,8 @@ import {
   addDoc,
   collectionData,
   doc,
-  updateDoc
+  updateDoc,
+  deleteDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -54,6 +55,14 @@ export class AppComponent {
     })
     .catch((err) => {
       console.log(err);
+    })
+  }
+
+  deleteData(id:string){
+    const docInstance = doc(this.firestore, 'users', id);
+    deleteDoc(docInstance)
+    .then(() => {
+      console.log('Data Deleted');
     })
   }
 }
