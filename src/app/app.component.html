@@ -96,3 +96,9 @@
   <br>
   <button type="submit">Save Data</button>
 </form>
+
+<ul>
+  <li *ngFor=" let data of userData | async">
+    {{ data.name }} / {{ data.email }}
+  </li>
+</ul>
