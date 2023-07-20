@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {MaterialDesignModule} from '../material-design/material-design.module'
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {MaterialDesignModule} from '../material-design/material-design.module'
   ],
   imports: [
     CommonModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    RouterModule
   ],
   exports:[
     HeaderComponent,
