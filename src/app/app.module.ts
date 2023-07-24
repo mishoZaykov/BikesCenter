@@ -13,11 +13,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { UserModule } from './user/user.module';
+import { CreateComponent } from './bikes/create/create.component';
+import { CatalogComponent } from './bikes/catalog/catalog.component';
+import { DetailsComponent } from './bikes/details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CreateComponent,
+    CatalogComponent,
+    DetailsComponent,
    
   ],
   imports: [
