@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './user-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

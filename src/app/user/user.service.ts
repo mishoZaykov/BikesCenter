@@ -23,7 +23,7 @@ export class UserService {
   }
 
   //register
-  register(email: string, password: string ) {
+  register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then(
       () => {
         alert('Registration Successful');
@@ -37,12 +37,20 @@ export class UserService {
   }
 
   //logout
-  logout(){
-    this.fireauth.signOut().then(() => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
-    }, err => {
-      alert(err.message);
-    })
+  logout() {
+    this.fireauth.signOut().then(
+      () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
+  }
+
+  isLoogedIn() {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null ? true : false;
   }
 }

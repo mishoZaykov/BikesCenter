@@ -9,12 +9,14 @@ import { UserService } from '../user.service';
 export class RegisterComponent implements OnInit {
   email: string = '';
   password: string = '';
+  repeatPassword: string = '';
 
   constructor(private user: UserService) {}
 
   ngOnInit(): void {}
 
   register(){
+
     if(this.email == ''){
       alert('Enter email')
       return
@@ -25,9 +27,15 @@ export class RegisterComponent implements OnInit {
       return
     }
 
-    this.user.register(this.email, this.password);
+    if(this.password != this.repeatPassword){
+      alert('Password missmatch')
+      return
+    }
+
+    this.user.register(this.email, this.password, );
     
     this.email = '';
     this.password = '';
+    this.repeatPassword = '';
   }
 }
