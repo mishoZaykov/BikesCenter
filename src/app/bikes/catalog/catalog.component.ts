@@ -14,27 +14,22 @@ export class CatalogComponent implements OnInit {
   refresh() {
     this.service.getBikes().subscribe((res) => {
       this.bikes = res;
-      console.log(res);
-      
     });
   }
 
   ngOnInit(): void {
     this.refresh();
-    
   }
 
-  addBikes(newBike:string){
+  addBikes(newBike: string) {
     this.service.addBikes(newBike).then((res) => {
-      console.log(res);
       this.refresh();
-    })
+    });
   }
 
-  delete(id:string){
+  delete(id: string) {
     this.service.deleteBikes(id).then((res) => {
-      console.log(res);
       this.refresh();
-    })
+    });
   }
 }
