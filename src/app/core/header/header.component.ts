@@ -8,12 +8,13 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent implements OnInit{
 
+  // This is hardcoded 
   userLoggedIn : boolean = false;
 
   constructor(private user: UserService){}
 
   ngOnInit(): void {
-    this.userLoggedIn = this.user.isLoogedIn()
+    // this.userLoggedIn = this.user.isLoogedIn()
   }
 
   isDisabled: boolean = true;

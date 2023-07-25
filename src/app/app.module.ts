@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http'
 import { BikesModule } from './bikes/bikes.module';
+import { ApiService } from './api.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { BikesModule } from './bikes/bikes.module';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
