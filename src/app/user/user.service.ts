@@ -10,10 +10,11 @@ export class UserService {
 
   //login
   login(email: string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email, password).then(
+      this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
-        localStorage.setItem('token', 'true');
+        localStorage.setItem('user', 'true');
         this.router.navigate(['/home']);
+               
       },
       (err) => {
         alert(err.message);
@@ -21,6 +22,7 @@ export class UserService {
       }
     );
   }
+
 
   //register
   register(email: string, password: string) {
@@ -40,7 +42,7 @@ export class UserService {
   logout() {
     this.fireauth.signOut().then(
       () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('user');
         this.router.navigate(['/login']);
       },
       (err) => {
@@ -49,8 +51,9 @@ export class UserService {
     );
   }
 
-  isLoogedIn() {
+   get isLogedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null ? true : false;
+    return user !== null ? true : false;    
   }
+  
 }

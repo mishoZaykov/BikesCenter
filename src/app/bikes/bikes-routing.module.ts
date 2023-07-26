@@ -16,7 +16,12 @@ const routes: Routes = [
   },
   {
     path: 'details',
-    component: DetailsComponent
+    children:[
+      {
+        path: ':bikeId',
+        component: DetailsComponent
+      }
+    ]
   }
 ];
 

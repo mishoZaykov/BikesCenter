@@ -6,16 +6,15 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
 
   // This is hardcoded 
-  userLoggedIn : boolean = false;
 
   constructor(private user: UserService){}
 
-  ngOnInit(): void {
-    // this.userLoggedIn = this.user.isLoogedIn()
-  }
+  get isLogedIn(): boolean{
+   return this.user.isLogedIn;
+ }
 
   isDisabled: boolean = true;
 

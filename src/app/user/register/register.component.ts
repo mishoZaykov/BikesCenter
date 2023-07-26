@@ -27,10 +27,10 @@ export class RegisterComponent implements OnInit {
       return
     }
 
-    if(this.password != this.repeatPassword){
-      alert('Password missmatch')
-      return
-    }
+    // if(this.password != this.repeatPassword){
+    //   alert('Password missmatch')
+    //   return
+    // }
 
     this.user.register(this.email, this.password, );
     
