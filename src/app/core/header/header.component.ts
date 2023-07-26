@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -8,7 +8,6 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
 
-  // This is hardcoded 
 
   constructor(private user: UserService){}
 
@@ -16,7 +15,6 @@ export class HeaderComponent {
    return this.user.isLogedIn;
  }
 
-  isDisabled: boolean = true;
 
   logout(){
     this.user.logout()
