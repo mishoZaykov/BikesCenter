@@ -16,8 +16,8 @@ export class UserService {
         this.router.navigate(['/home']);
                
       },
-      (err) => {
-        alert(err.message);
+      () => {
+        alert('User does not exist');
         this.router.navigate(['/login']);
       }
     );
