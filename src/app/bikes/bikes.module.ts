@@ -5,15 +5,16 @@ import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from './bikes-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CatalogComponent } from './catalog/catalog.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
-  declarations: [CreateComponent, CatalogComponent],
+  declarations: [CreateComponent, CatalogComponent, DetailsComponent],
   imports: [
     UserRoutingModule,
     CommonModule,
     RouterModule,
     FormsModule,
   ],
-  exports: [CreateComponent, CatalogComponent],
+  exports: [CreateComponent, CatalogComponent, DetailsComponent],
 })
 export class BikesModule {}
