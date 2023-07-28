@@ -1,8 +1,7 @@
 export interface Bike {
-  id: string
   model: string;
   imgUrl: string;
-  year: string;
-  price: string;
+  year: number;
+  price: number;
   description: string
 }

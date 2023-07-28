@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { BikesModule } from './bikes/bikes.module';
 import { ApiService } from './api.service';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
+=======
+import { NotFoundComponent } from './not-found/not-found.component';
+>>>>>>> parent of 59361c7 (New CRUD operations but failed)
 
 @NgModule({
   declarations: [

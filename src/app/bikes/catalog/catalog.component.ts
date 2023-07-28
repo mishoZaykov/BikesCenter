@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { Bike } from 'src/app/types/bike';
 
 @Component({
   selector: 'app-catalog',
@@ -8,20 +7,21 @@ import { Bike } from 'src/app/types/bike';
   styleUrls: ['./catalog.component.css'],
 })
 export class CatalogComponent implements OnInit {
-  bikesList: Bike[] = [];
-  id: string = '';
-  model: string = '';
-  imgUrl: string = '';
-  year: number = 0;
-  price: number = 0;
-  description: string = '';
-
   constructor(private service: ApiService) {}
 
-  ngOnInit(): void {
-    this.getAllBikes()
+  bikes: any = [];
+
+  refresh() {
+    this.service.getBikes().subscribe((res) => {
+      this.bikes = res;
+    });
   }
 
+  ngOnInit(): void {
+    this.refresh();
+  }
+
+<<<<<<< HEAD
   getAllBikes() {
     this.service.getAllBikes().subscribe(
       (res) => {
@@ -75,4 +75,17 @@ export class CatalogComponent implements OnInit {
 >>>>>>> parent of e9a3ed6 (Added 404 not found page)
 =======
 >>>>>>> parent of e9a3ed6 (Added 404 not found page)
+=======
+  // addBikes(newBike: string) {
+  //   this.service.addBikes(newBike).then((res) => {
+  //     this.refresh();
+  //   });
+  // }
+
+  // delete(id: string) {
+  //   this.service.deleteBikes(id).then((res) => {
+  //     this.refresh();
+  //   });
+  // }
+>>>>>>> parent of 59361c7 (New CRUD operations but failed)
 }
