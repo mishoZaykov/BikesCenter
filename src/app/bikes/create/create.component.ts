@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -8,27 +10,20 @@ import { ApiService } from 'src/app/api.service';
 })
 export class CreateComponent {
 
-  constructor(private service: ApiService) {}
+  constructor(private fs: Firestore , private router: Router) {}
 
-  bikes: any = [];
 
-  refresh() {
-    this.service.getBikes().subscribe((res) => {
-      this.bikes = res;
-      console.log(res);
-      
-    });
-  }
-
-  ngOnInit(): void {
-    this.refresh();
-    
-  }
-
-  addBikes(newBike:string){
-    this.service.addBikes(newBike).then((res) => {
-      console.log(res);
-      this.refresh();
+  //TODO: Have to add input validation
+  addBikes(f: NgForm) {
+    let bikesCollection = collection(this.fs, 'bikes');
+    if(f.value.model )
+    addDoc(bikesCollection, f.value).then(() => {
+      alert('Bike succesfully added')
+      this.router.navigate(['/catalog'])
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
+
 }

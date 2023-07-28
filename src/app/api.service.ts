@@ -6,15 +6,15 @@ import {
   addDoc,
   doc,
   deleteDoc,
-  documentId,
 } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import {  getDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private fs: Firestore) {}
+  constructor(private fs: Firestore, private router: Router) {}
 
   getBike(id: string) {
     let bikesCollection = collection(this.fs, 'bikes');
@@ -29,11 +29,7 @@ export class ApiService {
     return collectionData(bikesCollection, { idField: 'id' });
   }
 
-  addBikes(desc: string) {
-    let data = { description: desc };
-    let bikesCollection = collection(this.fs, 'bikes');
-    return addDoc(bikesCollection, data);
-  }
+ 
 
   deleteBikes(id: string) {
     let docRef = doc(this.fs, `bikes/${id}`);
