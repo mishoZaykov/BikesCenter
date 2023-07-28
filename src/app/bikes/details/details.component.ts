@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { Bike } from 'src/app/types/bike';
 
 @Component({
   selector: 'app-details',
@@ -8,27 +8,39 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  constructor(
-    private service: ApiService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  bikesList: Bike[] = [];
+  id: string = '';
+  model: string = '';
+  imgUrl: string = '';
+  year: number = 0;
+  price: number = 0;
+  description: string = '';
 
+  constructor(private service: ApiService, ) {}
 
-  bikes: any = [];
+  ngOnInit(): void {}
 
-  //TODO: Nedd to fix to get only one bike not all
-  fetchBike(){
-    const id = this.activatedRoute.snapshot.params['bikeId'];
-
-    this.service.getBike(id).subscribe((bike) => {
-      this.bikes = bike;
-
-      console.log(this.bikes)
-    });
+  deleteBikes(bike: Bike) {
+    if(window.confirm('Are you sure you want to delete the bike')){
+      this.service.deleteBike(bike)
+    }
   }
+
+  // bikes: any = [];
+
+  // //TODO: Nedd to fix to get only one bike not all
+  // fetchBike(){
+  //   const id = this.activatedRoute.snapshot.params['bikeId'];
+
+  //   this.service.getBike(id).subscribe((bike) => {
+  //     this.bikes = bike;
+
+  //     console.log(this.bikes)
+  //   });
+  // }
   
 
-  ngOnInit() : void {
-    this.fetchBike();
-  }
+  // ngOnInit() : void {
+  //   this.fetchBike();
+  // }
 }
