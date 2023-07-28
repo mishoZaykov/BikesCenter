@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
 export class RegisterComponent implements OnInit {
   email: string = '';
   password: string = '';
+  repeatPassword: string = '';
 
   constructor(private user: UserService) {}
 
@@ -17,19 +18,24 @@ export class RegisterComponent implements OnInit {
   register(){
 
     if(this.email == ''){
-      alert('Please Enter email')
+      alert('Enter email')
       return
     }
-
 
     if(this.password == ''){
-      alert('Please Enter password')
+      alert('Enter password')
       return
     }
 
-    this.user.register(this.email, this.password);
+    // if(this.password != this.repeatPassword){
+    //   alert('Password missmatch')
+    //   return
+    // }
+
+    this.user.register(this.email, this.password, );
     
     this.email = '';
     this.password = '';
+    this.repeatPassword = '';
   }
 }

@@ -37,15 +37,15 @@ export class CatalogComponent implements OnInit {
     );
   }
 
-  // bikes: any = [];
-
-  // refresh() {
-  //   this.service.getBikes().subscribe((res) => {
-  //     this.bikes = res;
+  // addBikes(newBike: string) {
+  //   this.service.addBikes(newBike).then((res) => {
+  //     this.refresh();
   //   });
   // }
 
-  // ngOnInit(): void {
-  //   this.refresh();
+  // delete(id: string) {
+  //   this.service.deleteBikes(id).then((res) => {
+  //     this.refresh();
+  //   });
   // }
 }

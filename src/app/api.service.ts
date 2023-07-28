@@ -1,34 +1,43 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-
-import { Bike } from './types/bike';
+import {
+  Firestore,
+  collectionData,
+  collection,
+  addDoc,
+  doc,
+  deleteDoc,
+  documentId,
+} from '@angular/fire/firestore';
+import {  getDoc } from 'firebase/firestore';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ApiService {
-  constructor(private afs: AngularFirestore) {}
+  constructor(private fs: Firestore) {}
 
-  // add bike
-  addBike(bike: Bike) {
-    bike.id = this.afs.createId();
-    return this.afs.collection('/Bikes').add(bike);
+  getBike(id: string) {
+    let bikesCollection = collection(this.fs, 'bikes');
+    return collectionData(bikesCollection, { idField: id });
+    // let docRef = doc(this.fs, `bikes/${id}`, );
+    // let docSnap = await getDoc(docRef)
+    // return docSnap
   }
 
-  //get all bikes
-  getAllBikes() {
-    return this.afs.collection('/Bikes').snapshotChanges();
+  getBikes() {
+    let bikesCollection = collection(this.fs, 'bikes');
+    return collectionData(bikesCollection, { idField: 'id' });
   }
 
-  // delete bike
-  deleteBike(bike: Bike) {
-    return this.afs.doc('/Bikes/' + bike.id).delete();
+  addBikes(desc: string) {
+    let data = { description: desc };
+    let bikesCollection = collection(this.fs, 'bikes');
+    return addDoc(bikesCollection, data);
   }
 
-  // update bike
-  updateBike(bike: Bike) {
-    this.deleteBike(bike);
-    this.addBike(bike);
+  deleteBikes(id: string) {
+    let docRef = doc(this.fs, `bikes/${id}`);
+    return deleteDoc(docRef);
   }
 
   // getBike(id: string) {

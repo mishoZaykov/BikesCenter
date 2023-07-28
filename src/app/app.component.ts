@@ -37,6 +37,7 @@ export class AppComponent {
   getData() {
     const collectionInstance = collection(this.firestore, 'users');
     collectionData(collectionInstance, {idField: 'id'}).subscribe((val) => {
+      console.log(val);
     });
 
     this.userData = collectionData(collectionInstance, {idField: 'id'});

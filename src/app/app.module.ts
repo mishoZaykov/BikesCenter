@@ -14,13 +14,13 @@ import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http'
 import { BikesModule } from './bikes/bikes.module';
 import { ApiService } from './api.service';
+import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

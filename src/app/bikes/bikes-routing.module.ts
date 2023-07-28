@@ -3,14 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
-import { AuthActivate } from '../core/guards/auth.activate';
 
 const routes: Routes = [
   
   {
     path: 'create',
-    component: CreateComponent,
-    // canActivate: [AuthActivate]
+    component: CreateComponent
   },
   {
     path: 'catalog',
