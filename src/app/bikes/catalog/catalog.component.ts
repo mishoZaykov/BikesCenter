@@ -48,4 +48,19 @@ export class CatalogComponent implements OnInit {
       this.refresh();
     });
   }
+<<<<<<< HEAD
+=======
+
+  addBikes(newBike: string) {
+    this.service.addBikes(newBike).then((res) => {
+      this.refresh();
+    });
+  }
+
+  delete(id: string) {
+    this.service.deleteBikes(id).then((res) => {
+      this.refresh();
+    });
+  }
+>>>>>>> parent of e9a3ed6 (Added 404 not found page)
 }
