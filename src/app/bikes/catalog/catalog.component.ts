@@ -37,15 +37,15 @@ export class CatalogComponent implements OnInit {
     );
   }
 
-  // addBikes(newBike: string) {
-  //   this.service.addBikes(newBike).then((res) => {
-  //     this.refresh();
-  //   });
-  // }
+  addBikes(newBike: string) {
+    this.service.addBikes(newBike).then((res) => {
+      this.refresh();
+    });
+  }
 
-  // delete(id: string) {
-  //   this.service.deleteBikes(id).then((res) => {
-  //     this.refresh();
-  //   });
-  // }
+  delete(id: string) {
+    this.service.deleteBikes(id).then((res) => {
+      this.refresh();
+    });
+  }
 }
