@@ -14,7 +14,7 @@ export class CreateComponent {
 
 
   //TODO: Have to add input validation
-  addBikes(f: NgForm) {
+  addBikes(f: NgForm): void {
     let bikesCollection = collection(this.fs, 'bikes');
     if(f.value.model )
     addDoc(bikesCollection, f.value).then(() => {
