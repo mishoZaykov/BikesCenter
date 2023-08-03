@@ -1,54 +1,32 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, authState,  updateProfile } from '@angular/fire/auth'
+import { from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private fireauth: AngularFireAuth, private router: Router) {}
 
-  //login
-  login(email: string, password: string) {
-      this.fireauth.signInWithEmailAndPassword(email, password).then(
-      () => {
-        localStorage.setItem('user', 'true');
-        this.router.navigate(['/home']);
-               
-      },
-      () => {
-        alert('User does not exist');
-        this.router.navigate(['/login']);
-      }
-    );
+  currentUser$ = authState(this.auth)
+
+  constructor( private auth: Auth) {}
+
+  //new login
+  login(email: string, password: string){
+   return from(signInWithEmailAndPassword(this.auth, email, password))
   }
 
 
-  //register
-  register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then(
-      () => {
-        alert('Registration Successful');
-        this.router.navigate(['/login']);
-      },
-      (err) => {
-        alert(err.message);
-        this.router.navigate(['/register']);
-      }
-    );
+  //new register method 
+  register(name: string, email: string, password: string){
+    return from(createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(switchMap(({user}) => updateProfile(user, {displayName: name})))
   }
 
-  //logout
-  logout() {
-    this.fireauth.signOut().then(
-      () => {
-        localStorage.removeItem('user');
-        this.router.navigate(['/login']);
-      },
-      (err) => {
-        alert(err.message);
-      }
-    );
+
+  //new logout
+  logout(){
+    return from(this.auth.signOut())
   }
 
    get isLogedIn(): boolean {

@@ -12,7 +12,7 @@
         >
           Sign in to your account
         </h1>
-        <form class="space-y-4 md:space-y-6" #form="ngForm" (ngSubmit)="login()">
+        <form class="space-y-4 md:space-y-6" [formGroup]="loginForm" (ngSubmit)="submit()">
           <div>
             <label
               for="email"
@@ -25,9 +25,12 @@
               id="email"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@company.com"
-              required
-              [(ngModel)]="email"
+              formControlName="email"
             />
+            <ng-container *ngIf="email?.touched">
+              <p class="text-left rounded-sm text-red-600 padding-top: 0;" *ngIf="email?.errors?.['required']">Email
+                 is required.</p>
+            </ng-container>
           </div>
           <div>
             <label
@@ -41,9 +44,12 @@
               id="password"
               placeholder="••••••••"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-              [(ngModel)]="password"
+              formControlName="password"
             />
+            <ng-container *ngIf="password?.touched">
+              <p class="text-left rounded-sm text-red-600 padding-top: 0;" *ngIf="password?.errors?.['required']">Password
+                 is required.</p>
+            </ng-container>
           </div>
 
           <button

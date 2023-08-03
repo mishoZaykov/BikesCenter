@@ -8,7 +8,6 @@ import {
   deleteDoc,
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import {  getDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
