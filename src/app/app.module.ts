@@ -17,6 +17,7 @@ import { ApiService } from './api.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserService } from './user/user.service';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],

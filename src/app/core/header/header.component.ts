@@ -9,16 +9,15 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
 
+  user$ = this.userService.currentUserProfile$;
 
-  constructor(public user: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router){}
 
-//   get isLogedIn(): boolean{
-//    return this.user.isLogedIn;
-//  }
+
 
 
   logout(){
-    this.user.logout().subscribe(() => {
+    this.userService.logout().subscribe(() => {
       this.router.navigate(['/home'])
     })
   }

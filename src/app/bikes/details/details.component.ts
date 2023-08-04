@@ -19,11 +19,16 @@ export class DetailsComponent implements OnInit {
   //TODO: Nedd to fix to get only one bike not all
   fetchBike(){
     const id = this.activatedRoute.snapshot.params['bikeId'];
-
+    console.log(id);
     this.service.getBike(id).subscribe((bike) => {
+      
+      for (const bikeId of bike) {
+          console.log(bikeId);
+        
+      }
       this.bikes = bike;
-
-      console.log(this.bikes)
+      
+     
     });
   }
   

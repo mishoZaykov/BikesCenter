@@ -1,4 +1,5 @@
 export interface Bike {
+  id: string,
   model: string;
   imgUrl: string;
   year: number;
