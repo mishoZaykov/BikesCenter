@@ -4,6 +4,7 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
+  NonNullableFormBuilder,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -32,12 +33,12 @@ export function passwordsMatchValidator(): ValidatorFn {
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  signUpForm = new FormGroup(
+  signUpForm = this.fb.group(
     {
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     },
     { validators: passwordsMatchValidator() }
   );
@@ -45,7 +46,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private user: UserService,
     private router: Router,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private fb: NonNullableFormBuilder
   ) {}
 
   ngOnInit(): void {}
@@ -67,14 +69,17 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    if (!this.signUpForm.valid) return;
+    const { name, email, password } = this.signUpForm.value;
 
-    const {name, email , password } = this.signUpForm.value;
+    if (!this.signUpForm.valid || !name || !email || !password) {
+      return;
+    }
+
     this.user
-      .register(email!, password!)
+      .register(email, password)
       .pipe(
-        switchMap(({user: { uid }}) =>
-          this.user.addUser({ uid, email: email! , displayName: name! })
+        switchMap(({ user: { uid } }) =>
+          this.user.addUser({ uid, email, displayName: name })
         ),
         this.toast.observe({
           success: 'You are signed up',
