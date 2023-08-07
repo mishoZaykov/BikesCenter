@@ -13,27 +13,18 @@ export class DetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  bike: any;
 
-  bikes: any = [];
-
-  //TODO: Nedd to fix to get only one bike not all
-  fetchBike(){
+  fetchBike() {
     const id = this.activatedRoute.snapshot.params['bikeId'];
-    console.log(id);
-    this.service.getBike(id).subscribe((bike) => {
+
+    this.service.getBikes().subscribe((bikes) => {
       
-      for (const bikeId of bike) {
-          console.log(bikeId);
-        
-      }
-      this.bikes = bike;
-      
-     
+      this.bike = bikes.find((b) => b['id'] === id);
     });
   }
-  
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.fetchBike();
   }
 }
