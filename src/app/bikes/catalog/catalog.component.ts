@@ -21,10 +21,8 @@ export class CatalogComponent implements OnInit {
     this.refresh();
   }
 
-
-  // delete(id: string) {
-  //   this.service.deleteBikes(id).then((res) => {
-  //     this.refresh();
-  //   });
-  // }
+  emptyCatalog(): boolean {
+    return this.bikes.length === 0;
+  }
+  
 }

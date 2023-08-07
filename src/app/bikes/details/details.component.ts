@@ -19,8 +19,13 @@ export class DetailsComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['bikeId'];
 
     this.service.getBikes().subscribe((bikes) => {
-      
       this.bike = bikes.find((b) => b['id'] === id);
+    });
+  }
+
+  delete(id: string) {
+    this.service.deleteBikes(id).then((res) => {
+      this.fetchBike();
     });
   }
 
