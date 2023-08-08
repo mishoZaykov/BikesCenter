@@ -3,18 +3,17 @@ import {
   Firestore,
   collectionData,
   collection,
-  addDoc,
   doc,
   deleteDoc,
 } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { getDoc } from 'firebase/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private fs: Firestore, private router: Router) {}
+  constructor(private fs: Firestore, private router: Router, private activatedRoute: ActivatedRoute,) {}
 
 
   getBikes() {
@@ -22,8 +21,8 @@ export class ApiService {
     return collectionData(bikesCollection, { idField: 'id' });
   }
 
-  deleteBikes(id: string) {
-    let docRef = doc(this.fs, `bikes/${id}`);
-    return deleteDoc(docRef);
+  deleteBikes(id: string): Observable<void> {
+    let docRef = doc(this.fs, 'bikes', id);
+    return from(deleteDoc(docRef));
   }
 }

@@ -1,4 +1,3 @@
-<!-- component -->
 <section class="text-gray-700 body-font flex overflow-hidden mx-auto md:h-screen lg:py-0 bg-white">
   <div *ngIf="bike"   class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -17,7 +16,7 @@
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">${{bike.price}}</span>
           <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Edit</button>
-          <button class="flex ml-4 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
+          <button (click)="delete()" class="flex ml-4 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
         </div>
       </div>
     </div>

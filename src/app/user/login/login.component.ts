@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import {
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 
@@ -17,11 +10,10 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
-  })
+    password: ['', [Validators.required]],
+  });
 
   constructor(
     private user: UserService,

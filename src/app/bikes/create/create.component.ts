@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/compat/auth/public_api';
 
 @Component({
   selector: 'app-create',
@@ -19,7 +18,6 @@ export class CreateComponent {
     
     if(f.value.model )
     addDoc(bikesCollection, f.value).then(() => {
-      console.log(f.value);
       
       alert('Bike succesfully added')
       this.router.navigate(['/catalog'])
