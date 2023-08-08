@@ -23,7 +23,6 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  //TODO
   delete() {
     const confirmed = window.confirm(
       'Are you sure you want to delete the offer?'
@@ -41,6 +40,7 @@ export class DetailsComponent implements OnInit {
       );
     }
   }
+
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['bikeId'];

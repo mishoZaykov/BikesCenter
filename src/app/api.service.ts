@@ -7,6 +7,7 @@ import {
   deleteDoc,
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { updateDoc } from 'firebase/firestore';
 import { Observable, from } from 'rxjs';
 
 @Injectable({
@@ -24,5 +25,11 @@ export class ApiService {
   deleteBikes(id: string): Observable<void> {
     let docRef = doc(this.fs, 'bikes', id);
     return from(deleteDoc(docRef));
+  }
+
+  
+  updateBikes(id:string, updateBike: any): Observable<void>{
+    let docRef = doc(this.fs, 'bikes', id);
+    return from(updateDoc(docRef, updateBike))
   }
 }

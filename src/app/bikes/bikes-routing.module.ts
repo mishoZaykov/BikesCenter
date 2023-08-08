@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   
@@ -21,9 +22,21 @@ const routes: Routes = [
       {
         path: ':bikeId',
         component: DetailsComponent
-      }
+      },
+      
     ]
   },
+  {
+    path: 'edit',
+    children:[
+      {
+        path: ':bikeId',
+        component: EditComponent
+      },
+      
+    ]
+  },
+ 
   { path: '**', component: NotFoundComponent },
 ];
 

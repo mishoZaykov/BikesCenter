@@ -78,7 +78,7 @@ export class UserService {
   }
 
   // updating the current user
-  updateUser(user: ProfileUser): Observable<void> {
+    updateUser(user: ProfileUser): Observable<void> {
     const ref = doc(this.firestore, 'users', user.uid)
     return from(updateDoc(ref, {...user}));
   }
