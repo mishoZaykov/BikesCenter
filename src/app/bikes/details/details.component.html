@@ -1,5 +1,5 @@
-<section class="text-gray-700 body-font flex overflow-hidden mx-auto md:h-screen lg:py-0 bg-white">
-  <div *ngIf="bike"   class="container px-5 py-24 mx-auto">
+<section class="text-gray-700 relative body-font flex flex-col justify-center  overflow-hidden mx-auto md:h-screen  lg:py-0 bg-white">
+  <div *ngIf="bike"   class="container px-5 py-48 mx-auto ">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{bike.imgUrl}}">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -13,10 +13,12 @@
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
 
         </div>
-        <div class="flex">
+        <div class="flex items-center">
           <span class="title-font font-medium text-2xl text-gray-900">${{bike.price}}</span>
-          <button routerLink="/edit/{{bike.id}}" class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Edit</button>
-          <button (click)="delete()" class="flex ml-4 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
+          <div *ngIf="userLoggedIn"  class="flex space-x-4 ml-auto">
+            <button routerLink="/edit/{{bike.id}}" class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Edit</button>
+            <button (click)="delete()" class="flex ml-4 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
+          </div>
         </div>
       </div>
     </div>

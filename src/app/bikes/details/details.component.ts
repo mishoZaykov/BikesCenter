@@ -17,6 +17,8 @@ export class DetailsComponent implements OnInit {
 
   bike: any;
   id: any;
+  userLoggedIn: boolean = false
+
   fetchBike() {
     this.service.getBikes().subscribe((bikes) => {
       this.bike = bikes.find((b) => b['id'] === this.id);
@@ -45,5 +47,10 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['bikeId'];
     this.fetchBike();
+
+    // Checks if user is logged in
+    this.service.userLoggedIn().subscribe((loggedIn) => {
+      this.userLoggedIn = loggedIn
+    })
   }
 }

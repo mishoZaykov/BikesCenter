@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'catalog',
-    component: CatalogComponent
+    component: CatalogComponent,
   },
   {
     path: 'details',
