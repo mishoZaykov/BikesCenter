@@ -36,8 +36,8 @@ export class DetailsComponent implements OnInit {
           alert('Offer deleted successfully');
           this.router.navigate(['/catalog']);
         },
-        (error) => {
-          console.error('Error deleting bike', error);
+        () => {
+          alert('Error deleting bike');
         }
       );
     }

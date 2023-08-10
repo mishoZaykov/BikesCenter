@@ -23,7 +23,7 @@ export class CreateComponent {
       this.router.navigate(['/catalog'])
     })
     .catch((err) => {
-      console.log(err);
+      alert('There was an error creating your offer')
     })
   }
 
