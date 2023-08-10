@@ -52,6 +52,10 @@ When the image of the bike is clicked you go to the bike details.
 
 ![catalog](https://i.gyazo.com/5a9e30c941646b9004cbc4fbece1425a.png)
 
+* If there are no offers
+
+![catalog](https://i.gyazo.com/3f01560355e1c555ffadbe736fcab996.png)
+
 # Details Page
 This page contains the details for each bike offer.
 Where logged in user can edit or delete his offer.
