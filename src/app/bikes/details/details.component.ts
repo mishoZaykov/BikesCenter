@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -19,12 +18,14 @@ export class DetailsComponent implements OnInit {
   id: any;
   userLoggedIn: boolean = false
 
+  // Getting the bike which matches with the id in the url
   fetchBike() {
     this.service.getBikes().subscribe((bikes) => {
       this.bike = bikes.find((b) => b['id'] === this.id);
     });
   }
 
+  // Deleting the bike from the catalog
   delete() {
     const confirmed = window.confirm(
       'Are you sure you want to delete the offer?'
@@ -45,7 +46,9 @@ export class DetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // Gets the id from the url
     this.id = this.activatedRoute.snapshot.params['bikeId'];
+
     this.fetchBike();
 
     // Checks if user is logged in

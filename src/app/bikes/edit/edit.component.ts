@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
+    // Creating a form group
     this.editForm = this.formBuilder.group({
       model: ['', Validators.required],
       imgUrl: ['', Validators.required],
@@ -27,6 +28,7 @@ export class EditComponent implements OnInit {
     });
   }
 
+  // Checks if the id of the bike mathces the id from the url
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['bikeId'];
 
@@ -36,6 +38,7 @@ export class EditComponent implements OnInit {
     });
   }
 
+  // Populate the form with the user inputs
   private populateForm() {
     if (this.selectedBike) {
       this.editForm.patchValue({
@@ -48,6 +51,7 @@ export class EditComponent implements OnInit {
     }
   }
 
+  // Updating bikes information
   updateBike() {
     if (this.editForm?.valid) {
       const updateData = this.editForm.value;

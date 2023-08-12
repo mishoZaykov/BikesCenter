@@ -11,6 +11,7 @@ export class CatalogComponent implements OnInit {
 
   bikes: any = [];
 
+  // Renders all the bikes in the gatalog
   refresh() {
     this.service.getBikes().subscribe((res) => {
       this.bikes = res;
@@ -21,6 +22,7 @@ export class CatalogComponent implements OnInit {
     this.refresh();
   }
 
+  // Checks if the catalog is empty
   emptyCatalog(): boolean {
     return this.bikes.length === 0;
   }

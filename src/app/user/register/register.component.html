@@ -7,6 +7,7 @@
           Create and account
         </h1>
         <form class="space-y-4 md:space-y-6" [formGroup]="signUpForm" (ngSubmit)="submit()">
+          <!-- Name -->
           <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
             <input type="text" name="name" id="name"
@@ -17,6 +18,7 @@
                 is required.</p>
             </ng-container>
           </div>
+          <!-- Email -->
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
             <input type="email" name="email" id="email"
@@ -27,6 +29,7 @@
                 is required.</p>
             </ng-container>
           </div>
+          <!-- Password -->
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
             <input type="password" name="password" id="password" placeholder="••••••••"
@@ -38,6 +41,7 @@
                 is required.</p>
             </ng-container>
           </div>
+          <!-- Confirm Password -->
           <div>
             <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
               password</label>
@@ -53,6 +57,7 @@
           <ng-container *ngIf="signUpForm.errors?.['passwordsDontMatch']">
             <p class="text-left rounded-sm text-red-600 padding-top: 0;"> Passwords should match</p>
           </ng-container>
+          
           <button type="submit"
             class="border w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
             Create an account

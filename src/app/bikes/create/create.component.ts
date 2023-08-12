@@ -12,7 +12,7 @@ export class CreateComponent {
 
   constructor(private fs: Firestore , private router: Router) {}
 
-
+  // Adding bike in the collection
   addBikes(f: NgForm): void {
     let bikesCollection = collection(this.fs, 'bikes', );
     

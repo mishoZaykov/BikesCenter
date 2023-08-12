@@ -12,6 +12,8 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { switchMap } from 'rxjs';
 
 export function passwordsMatchValidator(): ValidatorFn {
+
+  // Checks if passwords match
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
@@ -31,6 +33,8 @@ export function passwordsMatchValidator(): ValidatorFn {
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
+  // Creating a form group  
   signUpForm = this.fb.group(
     {
       name: ['', Validators.required],
@@ -50,22 +54,27 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Getting name from form group
   get name() {
     return this.signUpForm.get('name');
   }
 
+  // Getting email from form group
   get email() {
     return this.signUpForm.get('email');
   }
 
+  // Getting password from form group
   get password() {
     return this.signUpForm.get('password');
   }
 
+  // Getting confirmPassword from form group
   get confirmPassword() {
     return this.signUpForm.get('confirmPassword');
   }
 
+  // Submitting the form 
   submit() {
     const { name, email, password } = this.signUpForm.value;
 

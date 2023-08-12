@@ -7,6 +7,7 @@
           Create an offer
         </h1>
         <form #f="ngForm" (ngSubmit)="addBikes(f)" class="space-y-4 md:space-y-6">
+          <!-- Model -->
           <div>
             <label for="model" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
             <input name="model" type="text" id="model"
@@ -17,6 +18,7 @@
                 name is required.</p>
             </ng-container>
           </div>
+          <!-- Image URL -->
           <div>
             <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
             <input name="imgUrl" type="text" id="image"
@@ -28,6 +30,7 @@
                 is required.</p>
             </ng-container>
           </div>
+          <!-- Year -->
           <div>
             <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
             <input name="year" type="number" id="year"
@@ -39,6 +42,7 @@
                 is required.</p>
             </ng-container>
           </div>
+          <!-- Price -->
           <div>
             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
             <input name="price" type="number" id="price"
@@ -51,6 +55,7 @@
             </ng-container>
 
           </div>
+          <!-- Description -->
           <div>
             <label for="description"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>

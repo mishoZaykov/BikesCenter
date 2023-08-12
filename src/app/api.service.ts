@@ -6,7 +6,6 @@ import {
   doc,
   deleteDoc,
 } from '@angular/fire/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
 import { updateDoc } from 'firebase/firestore';
 import { Observable, from, map } from 'rxjs';
 import { UserService } from './user/user.service';
@@ -17,18 +16,19 @@ import { UserService } from './user/user.service';
 export class ApiService {
   constructor(private fs: Firestore, private userService: UserService) {}
 
-
+  // Gets all the bikes from the collection
   getBikes() {
     let bikesCollection = collection(this.fs, 'bikes');
     return collectionData(bikesCollection, { idField: 'id' });
   }
 
+  // Deleting a bike by its id
   deleteBikes(id: string): Observable<void> {
     let docRef = doc(this.fs, 'bikes', id);
     return from(deleteDoc(docRef));
   }
 
-  
+  // Updating a bike by its id 
   updateBikes(id:string, updateBike: any): Observable<void>{
     let docRef = doc(this.fs, 'bikes', id);
     return from(updateDoc(docRef, updateBike))

@@ -7,6 +7,7 @@
         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           User profile
         </h1>
+        <!-- Profile picture -->
         <div class="flex items-center justify-center relative">
           <img class="object-center rounded-full object-cover w-32 h-32" [src]="user.photoURL ?? 'assets/user.jpg'">
           <button class="absolute bottom-4 right-28" (click)="inputField.click()">
@@ -23,6 +24,7 @@
         <input #inputField type="file" hidden (change)="uploadImage($event, user)" />
         <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
           <div class="grid md:grid-cols-2 md:gap-6">
+            <!-- First name -->
             <div class="relative z-0 w-full mb-6 group">
               <input type="text" name="firstName" id="firstName" formControlName="firstName"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
@@ -30,6 +32,7 @@
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                 name</label>
             </div>
+            <!-- Last Name -->
             <div class="relative z-0 w-full mb-6 group">
               <input type="text" name="lastName" id="lastName" formControlName="lastName"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
@@ -38,6 +41,7 @@
                 name</label>
             </div>
           </div>
+            <!-- Display Name -->
           <div class="relative z-0 w-full mb-6 group">
             <input type="text" name="displayName" id="displayName"  formControlName="displayName"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
@@ -45,6 +49,7 @@
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Display
               Name</label>
           </div>
+          <!-- Phone -->
           <div class="relative z-0 w-full mb-6 group">
             <input type="text" name="phone" id="phone"  formControlName="phone"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
@@ -52,6 +57,7 @@
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
               Number</label>
           </div>
+          <!-- Address -->
           <div class="relative z-0 w-full mb-6 group">
             <input type="text" name="address" id="address"  formControlName="address"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />

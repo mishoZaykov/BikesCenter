@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { switchMap } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
-import {  NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { ProfileUser } from 'src/app/types/user-profile';
 
@@ -13,8 +13,10 @@ import { ProfileUser } from 'src/app/types/user-profile';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+
   user$ = this.userService.currentUserProfile$;
 
+  // Creating a form group
   profileForm = this.fb.group({
     uid: [''],
     displayName: [''],
@@ -30,6 +32,7 @@ export class ProfileComponent implements OnInit {
     private fb: NonNullableFormBuilder
   ) {}
 
+  // Updating user profile changes
   ngOnInit(): void {
     this.userService.currentUserProfile$
       .pipe(untilDestroyed(this))
@@ -38,6 +41,7 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  // Uploading user profile image
   uploadImage(event: any, {uid}: ProfileUser) {
     this.userService
       .uploadImage(event.target.files[0], `images/profile/${uid}`)
@@ -54,6 +58,7 @@ export class ProfileComponent implements OnInit {
       .subscribe();
   }
 
+  // Saving user profile 
   saveProfile() {
     const {uid, ...data} = this.profileForm.value;
 

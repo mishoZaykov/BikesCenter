@@ -20,6 +20,7 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 export class UserService {
   currentUser$ = authState(this.auth);
 
+  // Checks if the user is logged in
   get currentUserProfile$(): Observable<ProfileUser | null> {
     return this.currentUser$.pipe(
       switchMap((user) => {

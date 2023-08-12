@@ -10,6 +10,8 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
+  // Creating login form group 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
@@ -24,14 +26,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Getting email from form group
   get email() {
     return this.loginForm.get('email');
   }
 
+  // Getting password from form group
   get password() {
     return this.loginForm.get('password');
   }
 
+  // Submitting the form
   submit() {
     const { email, password } = this.loginForm.value;
 
