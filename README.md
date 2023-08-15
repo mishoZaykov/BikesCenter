@@ -1,6 +1,6 @@
 # Bikes Center
  This is my web application with Angular - a website where you can add sell or buy a bike. Application contains fuctionalities like creating and logging into your account, adding additional 
- information in the profile page. Creating, updating and deleting offers. Uses a Firebase: Firestoreforo the Back-End.
+ information in the profile page. Creating, updating and deleting offers. Uses a Firebase: Firestore for the Back-End.
 
  # Project DEMO
 https://angular-project-ebdf7.web.app/home
