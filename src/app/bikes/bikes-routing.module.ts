@@ -5,12 +5,14 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { EditComponent } from './edit/edit.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   
   {
     path: 'create',
     component: CreateComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'catalog',
@@ -18,20 +20,22 @@ const routes: Routes = [
   },
   {
     path: 'details',
+    canActivate: [AuthGuard],
     children:[
       {
         path: ':bikeId',
-        component: DetailsComponent
+        component: DetailsComponent,
       },
       
     ]
   },
   {
     path: 'edit',
+    canActivate: [AuthGuard],
     children:[
       {
         path: ':bikeId',
-        component: EditComponent
+        component: EditComponent,
       },
       
     ]
